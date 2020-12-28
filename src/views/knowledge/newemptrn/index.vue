@@ -4,7 +4,7 @@
     <div class="head-container">
       <div v-if="crud.props.searchToggle">
         <!-- 搜索 -->
-        <el-input v-model="query.name" clearable size="small" placeholder="输入业务逻辑名称搜索" style="width: 200px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
+        <el-input v-model="query.name" clearable size="small" placeholder="输入课程名称搜索" style="width: 200px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
         <el-select v-model="query.enabled" clearable size="small" placeholder="状态" class="filter-item" style="width: 90px" @change="crud.toQuery">
           <el-option v-for="item in enabledTypeOptions" :key="item.key" :label="item.display_name" :value="item.key" />
         </el-select>
@@ -15,7 +15,7 @@
     <!--表单组件-->
     <el-dialog append-to-body :close-on-click-modal="false" :before-close="crud.cancelCU" :visible.sync="crud.status.cu > 0" :title="crud.status.title" width="600px">
       <el-form ref="form" inline :model="form" :rules="rules" size="small" label-width="120px">
-        <el-form-item label="业务逻辑名称" prop="name">
+        <el-form-item label="课程名称" prop="name">
           <el-input v-model="form.name" style="width: 370px;" />
         </el-form-item>
         <el-form-item label="顶层目录">
@@ -71,7 +71,7 @@
       @selection-change="crud.selectionChangeHandler"
     >
       <el-table-column :selectable="checkboxT" type="selection" width="55" />
-      <el-table-column label="业务逻辑与流程的名称" prop="name" width="400" />
+      <el-table-column label="课程名称" prop="name" width="400" />
       <el-table-column prop="link" label="附件资料" width="220">
         <template slot-scope="scope">
           <el-popover
@@ -139,7 +139,7 @@ export default {
   name: 'NewEmpTrn',
   components: { Treeselect, crudOperation, rrOperation, udOperation },
   cruds() {
-    return CRUD({ title: '业务逻辑', url: 'api/newemptrn', crudMethod: { ...crudDept }})
+    return CRUD({ title: '课程', url: 'api/newemptrn', crudMethod: { ...crudDept }})
   },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   // 设置数据字典

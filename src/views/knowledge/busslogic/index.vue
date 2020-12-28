@@ -71,7 +71,7 @@
       @selection-change="crud.selectionChangeHandler"
     >
       <el-table-column :selectable="checkboxT" type="selection" width="55" />
-      <el-table-column label="业务逻辑与流程的名称" prop="name" width="380" />
+      <el-table-column label="业务逻辑与数据逻辑的名称" prop="name" width="380" />
       <el-table-column prop="link" label="附件资料" width="200">
         <template slot-scope="scope">
           <el-popover
@@ -407,7 +407,7 @@ export default {
       })
     },
     checkboxT(row, rowIndex) {
-      return row.id !== 1
+      return true
     }
   }
 }

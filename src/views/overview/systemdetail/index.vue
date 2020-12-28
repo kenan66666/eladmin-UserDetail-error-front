@@ -85,19 +85,19 @@
 </template>
 
 <script>
-import systemListAPI from '@/api/overview/systemdetail'
+// import systemListAPI from '@/api/overview/systemdetail'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
-import CRUD, { presenter, header, form, crud } from '@crud/crud'
-import rrOperation from '@crud/RR.operation'
-import crudOperation from '@crud/CRUD.operation'
-import udOperation from '@crud/UD.operation'
-import DateRangePicker from '@/components/DateRangePicker'
+import CRUD, { presenter, header, crud } from '@crud/crud'
+// import rrOperation from '@crud/RR.operation'
+// import crudOperation from '@crud/CRUD.operation'
+// import udOperation from '@crud/UD.operation'
+// import DateRangePicker from '@/components/DateRangePicker'
 import { mapGetters } from 'vuex'
 import OverviewMain from '@/views/overview/systemdetail/overviewmain'
 
 export default {
   name: 'SystemDetail',
-  components: { crudOperation, rrOperation, udOperation, DateRangePicker, OverviewMain },
+  components: { OverviewMain },
   cruds() {
     return CRUD({ title: '系统清单', url: 'api/overview/systemlist' })
   },
@@ -174,14 +174,14 @@ export default {
     // 测试router.push的页面跳转
     handleClick() {
       this.$router.push({ path: "'baseApi + '/overview/' + 'systemdetail/' + 'systemdetail/''" })
-    },
-    handleClose(done) {
-      this.$confirm('确认关闭？')
-        .then(_ => {
-          done()
-        })
-        .catch(_ => {})
     }
+    // handleClose(done) {
+    //   this.$confirm('确认关闭？')
+    //     .then(_ => {
+    //       done()
+    //     })
+    //     .catch(_ => {})
+    // }
     // 表格数据获取函数，获取子级元素的方法
     // getDeptDatas(tree, treeNode, resolve) {
     //   const params = { pid: tree.id }

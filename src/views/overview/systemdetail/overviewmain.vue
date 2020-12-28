@@ -143,13 +143,13 @@
 <script>
 import OverviewMainAPI from '@/api/overview/overviewmain'
 import SystemNameAPI from '@/api/knlge/systemname'
-import CRUD, { presenter, header, form, crud } from '@crud/crud'
-import rrOperation from '@crud/RR.operation'
-import crudOperation from '@crud/CRUD.operation'
-import udOperation from '@crud/UD.operation'
-import DateRangePicker from '@/components/DateRangePicker'
+// import CRUD, { presenter, header, form, crud } from '@crud/crud'
+// import rrOperation from '@crud/RR.operation'
+// import crudOperation from '@crud/CRUD.operation'
+// import udOperation from '@crud/UD.operation'
+// import DateRangePicker from '@/components/DateRangePicker'
 
-const defaultForm = { sysName: null, sysId: null, area: null, systemType: null, functionDescription: null, owner: null, developmentLanguage: null }
+// const defaultForm = { sysName: null, sysId: null, area: null, systemType: null, functionDescription: null, owner: null, developmentLanguage: null }
 export default {
   name: 'OverviewMain',
   props: {
@@ -225,11 +225,11 @@ export default {
             this.addClicked = false
             location.reload()
           }
-        ).catch(
-          (err) => {
-            this.loading = false
-          }
-        )
+        )// .catch(
+        //   (err) => {
+        //     this.loading = false
+        //   }
+        // )
       } else {
         OverviewMainAPI.edit(this.form).then(
           (res) => {

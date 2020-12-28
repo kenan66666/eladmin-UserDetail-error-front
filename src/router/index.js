@@ -6,6 +6,7 @@ import 'nprogress/nprogress.css'// progress bar style
 import { getToken } from '@/utils/auth' // getToken from cookie
 import { buildMenus } from '@/api/system/menu'
 import { filterAsyncRouter } from '@/store/modules/permission'
+import Vue from 'vue'
 
 NProgress.configure({ showSpinner: false })// NProgress Configuration
 
@@ -16,7 +17,7 @@ router.beforeEach((to, from, next) => {
     document.title = to.meta.title + ' - ' + Config.title
   }
   NProgress.start()
-  if (getToken()) {
+  if (Vue.prototype.$keycloak.authenticated) {
     // 已登录且要跳转的页面是登录页
     if (to.path === '/login') {
       next({ path: '/' })
