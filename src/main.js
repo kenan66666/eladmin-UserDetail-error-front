@@ -44,7 +44,7 @@ Vue.use(Element, {
 
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
-Vue.prototype.openLoading = function () {
+Vue.prototype.openLoading = function() {
   const loading = this.$loading({
     lock: true,
     text: '正在加载...',
@@ -54,7 +54,7 @@ Vue.prototype.openLoading = function () {
     body: true,
     customClass: 'mask'
   })
-  setTimeout(function () {
+  setTimeout(function() {
     loading.close()
   }, 5000)
   return loading
@@ -79,7 +79,7 @@ const keycloak = Keycloak(initOptions)
 
 keycloak.init({ onLoad: initOptions.onLoad, promiseType: 'native' }).then((authenticated) => {
   if (!authenticated) {
-    window.location.reload();
+    window.location.reload()
   } else {
     Vue.prototype.$keycloak = keycloak
     // Vue.prototype.$store.commit('SETISLOGIN', true)
@@ -89,22 +89,21 @@ keycloak.init({ onLoad: initOptions.onLoad, promiseType: 'native' }).then((authe
   new Vue({
     render: h => h(App),
     router,
-    store,
+    store
   }).$mount('#app')
 
   setInterval(() => {
     keycloak.updateToken(70).then((refreshed) => {
       if (refreshed) {
-        console.log('Token refreshed');
+        console.log('Token refreshed')
       } else {
-        console.log('Token not refreshed, valid for '
-          + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds');
+        console.log('Token not refreshed, valid for ' +
+          Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds')
       }
     }).catch(error => {
       console.log('Failed to refresh token', error)
     })
   }, 60000)
-
 }).catch(error => {
   console.log('Authenticated Failed', error)
 })
